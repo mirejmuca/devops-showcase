@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   build-test:
@@ -43,7 +43,7 @@ jobs:
       - name: Build image
         run: docker build -t shortener:ci app
       - name: Trivy scan
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: uses: aquasecurity/trivy-action@v0.33.1
         with:
           image-ref: shortener:ci
           severity: CRITICAL,HIGH
