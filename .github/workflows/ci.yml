@@ -43,7 +43,7 @@ jobs:
       - name: Build image
         run: docker build -t shortener:ci app
       - name: Trivy scan
-        uses: uses: aquasecurity/trivy-action@v0.33.1
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: shortener:ci
           severity: CRITICAL,HIGH
