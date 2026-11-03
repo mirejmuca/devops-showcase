@@ -49,3 +49,18 @@ jobs:
           severity: CRITICAL,HIGH
           ignore-unfixed: true
           exit-code: "1"
+
+  terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Format check
+        run: terraform fmt -check -recursive
+      - name: Init
+        run: terraform init -backend=false
+      - name: Validate
+        run: terraform validate
