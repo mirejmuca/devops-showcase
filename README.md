@@ -83,6 +83,18 @@ Changes reach `develop` through pull requests only.
 
 The Grafana dashboard is provisioned from files in `monitoring/`, so it exists as soon as the stack starts. It shows request rate per endpoint, 5xx error rate, p95 latency and JVM heap usage.
 
+### Healthy
+
+![Grafana dashboard, healthy](docs/grafana-healthy.png)
+
+Steady traffic: no 5xx errors, low p95 latency, normal JVM heap.
+
+### During a database outage
+
+![Grafana dashboard, database outage](docs/grafana-outage.png)
+
+The database was stopped for 40 seconds. Error rate spikes, p95 latency climbs to the 30 s connection-pool timeout, and request rate recovers once the database is back.
+
 ### Failure demo
 
 1. Open the Grafana dashboard and the Prometheus targets page (`/targets`).
